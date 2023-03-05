@@ -1,23 +1,21 @@
 import {Box, Container, Typography} from "@mui/material";
-import ChangeDisplay from "./features/ChangeDisplay";
-import Delete from "./features/Delete";
+import ChangeDisplay from "../Header/Features/ChangeDisplay";
+import Delete from "../Header/Features/Delete";
 import List from "./features/List";
+import React, {useContext} from "react";
+import {Context} from "../../context";
+import NotesBoxList from "./features/NotesBoxList";
 
 const NotesList = () => {
+
+    const {display} = useContext(Context)
+
     return (
-        <Container sx={{
-            backgroundColor: "#222327",
-            width: "420px",
-            borderRadius: "25px 0px 0px 25px",
-            padding: 2
-        }}>
-            <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
-                <ChangeDisplay/>
-                <Delete/>
-            </Box>
-            <Typography sx={{color: 'gray', fontWeight: '600', margin: '15px 10px 10px 0px'}}>Сегодня</Typography>
-            <List/>
-        </Container>
+        <Box sx={{width: 425, backgroundColor: '#222327', padding: 2}}>
+            <Typography
+                sx={{color: 'gray', fontWeight: '600', margin: '0px 10px 10px 0px'}}>Сегодня</Typography>
+            {display === 'list' && <List/>}
+        </Box>
     );
 };
 

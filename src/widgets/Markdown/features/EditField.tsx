@@ -23,9 +23,9 @@ const EditField = () => {
     const note = notes?.filter(note => note.id === currentNote)[0]
 
     const initialState: INote = {
-        body: note!.body,
-        createdAt: note!.createdAt,
-        id: note!.id,
+        body: note?.body || null,
+        createdAt: note?.createdAt || null,
+        id: note?.id || null,
     };
 
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -33,8 +33,8 @@ const EditField = () => {
     useEffect(() => {
         inpRef.current?.focus()
         if (currentNote !== null) {
-            dispatch({type: 'setBody', payload: note!.body})
-            dispatch({type: 'setCreatedAt', payload: note!.createdAt})
+            dispatch({type: 'setBody', payload: note?.body})
+            dispatch({type: 'setCreatedAt', payload: note?.createdAt})
 
         }
 
@@ -45,7 +45,9 @@ const EditField = () => {
     }, [state.body])
 
     return (
-        <Box>
+        <Box sx={{
+            width:"100%",
+        }}>
             <Typography sx={{
                 color: 'gray',
                 margin: '5px auto',

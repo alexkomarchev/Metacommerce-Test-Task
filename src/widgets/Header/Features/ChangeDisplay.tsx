@@ -1,16 +1,16 @@
 import {Box} from "@mui/material";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import WidgetsIcon from '@mui/icons-material/Widgets';
-import {useState} from "react";
+import {useContext} from "react";
+import {Display} from "../../../entities/entities";
+import {Context} from "../../../context";
 
-type Display = 'list' | 'box'
 
 const ChangeDisplay = () => {
 
-    const [display, setDisplay] = useState<Display>("list")
-
+    const {displayChange,display} = useContext(Context)
     const DisplayChange = (display: Display) => {
-        setDisplay(display)
+        displayChange!(display)
     }
 
     return (

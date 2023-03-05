@@ -8,4 +8,6 @@ export const Context = createContext<IContext>({
     updateNote:null,
     addNote:null,
     deleteNote:null,
+    display:'list',
+    displayChange:null,
 })

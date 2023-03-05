@@ -1,26 +1,22 @@
-import {Container, Typography} from "@mui/material";
-import {useContext} from "react";
-import Edit from "./features/Edit";
+import {Box, Typography} from "@mui/material";
+import React, {useContext} from "react";
 import EditField from "./features/EditField";
 import {Context} from "../../context";
 
 
 const Markdown = () => {
 
-    const {currentNote} = useContext(Context)
+    const {currentNote, display} = useContext(Context)
 
     return (
-        <Container sx={{
-            backgroundColor: "#1e1e1e",
-            width: "1000px",
-            height: "100%",
-            borderRadius: "0px 25px 25px 0px",
-            borderLeft: 1,
-            padding: 2
-        }}>
-            <Edit/>
-            {currentNote ? <EditField/> : <Typography sx={{color:'gray',textAlign:'center',margin:' auto'}}>Выберите или создайте заметку</Typography>}
-        </Container>
+        <Box sx={{
+            width: display === 'list' ? 1000 : '100%',
+            backgroundColor:display === 'list' ? '#1e1e1e' : '#222327',
+            overflowY: 'scroll'}}>
+            {currentNote ? <EditField/> :
+                <Typography sx={{color: 'gray', textAlign: 'center', margin: ' auto'}}>Выберите или создайте
+                    заметку</Typography>}
+        </Box>
     );
 };
 

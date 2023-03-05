@@ -4,10 +4,10 @@ import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
 import {useContext} from "react";
 import {Context} from "../../../context";
 
+
 const Edit = () => {
 
     const {addNote, pickCurrentNote} = useContext(Context)
-
 
     return (
         <Box sx={{width: '150px', display: 'flex', justifyContent: 'space-between'}}>
