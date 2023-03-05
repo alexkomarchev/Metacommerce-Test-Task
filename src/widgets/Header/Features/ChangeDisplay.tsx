@@ -1,6 +1,7 @@
 import {Box} from "@mui/material";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import WidgetsIcon from '@mui/icons-material/Widgets';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import {useContext} from "react";
 import {Display} from "../../../entities/entities";
 import {Context} from "../../../context";
@@ -8,7 +9,7 @@ import {Context} from "../../../context";
 
 const ChangeDisplay = () => {
 
-    const {displayChange,display} = useContext(Context)
+    const {displayChange, display, pickCurrentNote} = useContext(Context)
     const DisplayChange = (display: Display) => {
         displayChange!(display)
     }
@@ -38,6 +39,16 @@ const ChangeDisplay = () => {
                     padding: "3px"
                 }}/>
             </Box>
+            {display === 'box' && <Box onClick={() => pickCurrentNote!(-1)}>
+                <ArrowBackIosIcon sx={{
+                    color: "#888",
+                    fontSize: 29,
+                    cursor: "pointer",
+                    borderRadius: 2,
+                    padding: "3px",
+                    marginLeft: 2,
+                }}/>
+            </Box>}
         </Box>
     );
 };

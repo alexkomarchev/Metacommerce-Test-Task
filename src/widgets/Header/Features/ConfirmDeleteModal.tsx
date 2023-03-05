@@ -1,8 +1,4 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import {Box, Button, Typography, Modal} from '@mui/material';
 import {useContext} from "react";
 import {Context} from "../../../context";
 

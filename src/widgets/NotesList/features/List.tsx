@@ -5,11 +5,11 @@ import {Context} from "../../../context";
 
 const List = () => {
 
-    const {notes} = useContext(Context)
+    const {searchNotes} = useContext(Context)
 
     return (
         <Box sx={{borderTop: 1, borderColor: 'gray', height: '90%', overflowY: 'scroll'}}>
-            {notes?.map(note => <Note
+            {searchNotes?.map(note => <Note
                 key={note.id} id={note.id} body={note.body} createdAt={note.createdAt}/>)}
         </Box>
     );

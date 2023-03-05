@@ -25,14 +25,16 @@ const Edit = () => {
                 }}
                 />
             </Box>
-            <FormatColorTextIcon sx={{
-                color: "#888",
-                fontSize: 29,
-                cursor: "pointer",
-                borderRadius: 2,
-                marginRight: 1,
-                padding: "3px"
-            }}/>
+            <Box>
+                <FormatColorTextIcon sx={{
+                    color: "#888",
+                    fontSize: 29,
+                    cursor: "pointer",
+                    borderRadius: 2,
+                    marginRight: 1,
+                    padding: "3px"
+                }}/>
+            </Box>
         </Box>
     );
 };

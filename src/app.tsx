@@ -1,21 +1,22 @@
-import {Box, Container, Typography} from "@mui/material";
+import {Box, Container} from "@mui/material";
 import {Context} from "./context";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {Display, INotes} from "./entities/entities";
 import {getRandomId} from "./shared/getRandomId";
 import {getCreatedAt} from "./shared/Time";
 import Header from "./widgets/Header/Header";
-import List from "./widgets/NotesList/features/List";
-import EditField from "./widgets/Markdown/features/EditField";
 import NotesList from "./widgets/NotesList/NotesList";
 import Markdown from "./widgets/Markdown/Markdown";
 import NotesBoxList from "./widgets/NotesList/features/NotesBoxList";
+
 
 function App() {
 
     const [currentNote, setCurrentNote] = useState<number | null>(null)
 
     const [notes, setNotes] = useState<INotes | null>(localStorage.getItem('notes') ? JSON.parse(localStorage.getItem('notes') || '') : null)
+
+    const [searchNotes, setSearchNotes] = useState(notes)
 
     const [display, setDisplay] = useState<Display>("list")
 
@@ -32,18 +33,22 @@ function App() {
     }, [notes])
 
     const pickCurrentNote = (id: number) => {
+
+        if (id === -1) {
+            setCurrentNote(null)
+            return
+        }
+
         setCurrentNote(id)
     }
 
     const updateNote = (body: string): void => {
-
         setNotes(notes!.map(note => {
             if (note.id === currentNote) {
                 note.body = body
             }
             return note
         }))
-
     }
 
     const deleteNote = (): void => {
@@ -71,6 +76,15 @@ function App() {
         setDisplay(view)
     }
 
+    const searchNote = (text: string): void => {
+        if (text.trim() === '') {
+            console.log('yes')
+        }
+        setSearchNotes(notes!.filter(note => note.body?.toLowerCase().includes(text.toLowerCase())))
+
+    }
+
+
     return (
         <Context.Provider value={{
             pickCurrentNote,
@@ -78,12 +92,14 @@ function App() {
             addNote,
             deleteNote,
             displayChange,
+            searchNote,
+            searchNotes,
             display,
             notes,
             currentNote,
 
         }}>
-            <Container maxWidth="xl" sx={{height: "90vh", width: 1420}}>
+            <Container maxWidth="xl" sx={{height: "80vh", width: 1420}}>
                 <Header/>
                 <Box sx={{display: 'flex', height: "700px"}}>
                     {display === 'list' && <NotesList/>}

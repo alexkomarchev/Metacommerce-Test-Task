@@ -5,14 +5,15 @@ import NoteBox from "./NoteBox";
 
 const NotesBoxList = () => {
 
-    const {notes, display} = useContext(Context)
+    const {searchNotes, display} = useContext(Context)
 
     return (
         <Box sx={{
+            display: 'flex',
             width: display === 'list' ? 1000 : '100%',
             backgroundColor: display === 'list' ? '#1e1e1e' : '#222327'
         }}>
-            {notes?.map(note => <NoteBox
+            {searchNotes?.map(note => <NoteBox
                 key={note.id} id={note.id} body={note.body} createdAt={note.createdAt}/>)}
         </Box>
     );
