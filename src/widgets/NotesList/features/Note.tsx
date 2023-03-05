@@ -2,6 +2,7 @@ import {Box, Typography} from "@mui/material";
 import {INote} from '../../../entities/entities'
 import {useContext} from "react";
 import {Context} from "../../../context";
+import {getCreatedAtHours} from "../../../shared/Time";
 
 const Note = ({id, body, createdAt}: INote) => {
 
@@ -20,9 +21,9 @@ const Note = ({id, body, createdAt}: INote) => {
                 marginTop: 1,
                 borderRadius: 3
             }}>
-            <Typography sx={{color: 'white', fontWeight: '600'}}>{id}</Typography>
+            <Typography sx={{color: 'white', fontWeight: '600'}}>{body.substring(0,20)}</Typography>
             <Box sx={{display: 'flex'}}>
-                <Typography sx={{color: 'white', fontWeight: '600', fontSize: 15}}>{createdAt}</Typography>
+                <Typography sx={{color: 'white', fontWeight: '600', fontSize: 15}}>{getCreatedAtHours(createdAt)}</Typography>
                 <Typography sx={{marginLeft: 1, color: 'gray', fontSize: 15}}>{body}</Typography>
             </Box>
         </Box>

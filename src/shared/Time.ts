@@ -1,4 +1,4 @@
-export function getCreatedAt ():string {
+export function getCreatedAt(): string {
 
     const d = new Date();
 
@@ -16,4 +16,8 @@ export function getCreatedAt ():string {
     }
 
     return `${[day, month, year].join('.')} в ${hours}:${minutes}`;
+}
+
+export function getCreatedAtHours(str:string): string {
+    return str.split('в')[1];
 }

@@ -6,11 +6,15 @@ import {Context} from "../../../context";
 
 const Edit = () => {
 
-    const {pickCurrentNote} = useContext(Context)
+    const {addNote, pickCurrentNote} = useContext(Context)
+
 
     return (
         <Box sx={{width: '150px', display: 'flex', justifyContent: 'space-between'}}>
-            <Box onClick={() => pickCurrentNote!()}>
+            <Box onClick={() => {
+                pickCurrentNote!()
+                addNote!()
+            }}>
                 <EditIcon sx={{
                     color: "#888",
                     fontSize: 29,

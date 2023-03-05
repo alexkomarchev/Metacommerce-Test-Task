@@ -5,4 +5,7 @@ export const Context = createContext<IContext>({
     notes: null,
     pickCurrentNote:null,
     currentNote:null,
+    updateNote:null,
+    addNote:null,
+    deleteNote:null,
 })

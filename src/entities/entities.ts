@@ -5,11 +5,14 @@ export interface INote {
 
 }
 
-export type INotes = INote[]
+export type INotes = INote[] | null
 
 
 export interface IContext {
     pickCurrentNote: ((id?: number) => void) | null
-    notes: INote[] | null
-    currentNote?: number | null
+    notes: INotes | null
+    currentNote?: number | null,
+    updateNote: ((body?: string) => void) | null,
+    addNote: (() => void) | null,
+    deleteNote:(() => void) | null,
 }
