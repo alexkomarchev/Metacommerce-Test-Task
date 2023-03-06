@@ -18,6 +18,8 @@ function App() {
 
     const [searchNotes, setSearchNotes] = useState(notes)
 
+    useEffect(() => setSearchNotes(notes), [notes])
+
     const [display, setDisplay] = useState<Display>("list")
 
     useEffect(() => {
